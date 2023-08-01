@@ -1,0 +1,9 @@
+.header-container {
+    color: red;
+    display: flex;
+    align-items: center;
+}
+
+.header-link {
+    margin-left: 20px;
+}

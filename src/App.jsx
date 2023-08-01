@@ -1,17 +1,27 @@
-import { useState } from 'react'
-import viteLogo from '/vite.svg'
+import Main from './layouts/Main'
 import './App.css'
+import './styles/Header.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <header>
-        <h1>Holis</h1>
-      </header>
-      <main></main>
-      <footer></footer>
+      <Main>
+        <main>
+          <article>
+            <h3>Article</h3>
+            <p>Content</p>
+          </article>
+          <article>
+            <h3>Article</h3>
+            <p>Content</p>
+          </article>
+          <article>
+            <h3>Article</h3>
+            <p>Content</p>
+          </article>
+        </main>
+      </Main>
     </>
   )
 }
