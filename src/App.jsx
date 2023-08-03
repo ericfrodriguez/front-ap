@@ -1,5 +1,5 @@
 import Main from './layouts/Main'
-import './App.css'
+import Home from './pages/Home'
 import './styles/Header.css'
 
 function App() {
@@ -7,20 +7,7 @@ function App() {
   return (
     <>
       <Main>
-        <main>
-          <article>
-            <h3>Article</h3>
-            <p>Content</p>
-          </article>
-          <article>
-            <h3>Article</h3>
-            <p>Content</p>
-          </article>
-          <article>
-            <h3>Article</h3>
-            <p>Content</p>
-          </article>
-        </main>
+        <Home />
       </Main>
     </>
   )
