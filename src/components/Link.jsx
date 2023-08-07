@@ -4,7 +4,7 @@ const Link = ({title, to}) => {
 
 
     return (
-        <a className='header-link' href={to}>{title}</a>
+        <a className='text-sky-800 hover:text-indigo-600 mx-2' href={to}>{title}</a>
     )
 }
 
