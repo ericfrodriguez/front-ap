@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import Link from './Link';
+import { Link } from 'react-router-dom'
 
 const Header = () => {
 
     let [show, setShow] = useState(false);
 
     const links = [
-        {title: 'home', to: '/home'},
-        {title: 'events', to: '/events'},
-        {title: 'contact', to: '/contactus'},
-        {title: 'about us', to: '/aboutus'},
+        { title: 'home', to: '/' },
+        { title: 'cities', to: '/cities' },
+        { title: 'sign in', to: '/signin' },
+
     ]
 
     const handleShowMenu = () => {
@@ -23,14 +23,16 @@ const Header = () => {
     }
 
     return (
-        <header className='header-container'>
-            <h2 className='header-title'>Amazing Events</h2>
-            {
-                show 
-                ? links.map((link) => (<Link key={link.title} title={link.title} to={link.to}/>))
-                : null
-            }
-            <button onClick={handleShowMenu}>Show menu</button>
+        <header className='w-full h-auto text-center'>
+            <h2 className='my-4 text-3xl text-center'>Amazing Events</h2>
+            <div className=''>
+                <button className='p-2 border-sky-800 border-[1px] rounded-md' onClick={handleShowMenu}>Show menu</button>
+                {
+                    show
+                        ? links.map((link) => (<Link className='text-sky-800 hover:text-indigo-600 mx-2' key={link.title} to={link.to}>{link.title}</Link>))
+                        : null
+                }
+            </div>
         </header>
     )
 }

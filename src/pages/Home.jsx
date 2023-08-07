@@ -1,50 +1,42 @@
-import { useState, useEffect } from "react"
-import Carousel from "../components/Carousel";
 
 const Home = () => {
-    let [counter, setCounter] = useState(0);
-    let [counter2, setCounter2] = useState(0);
-
-    const handleAdd = () => {
-        setCounter(counter + 1)
-    }
-
-    const handleReset = () => {
-        setCounter(0)
-    }
-
-    const handleAdd2 = () => {
-        setCounter2(counter2 + 1)
-    }
-
-    const handleReset2 = () => {
-        setCounter2(0)
-    }
-
-    useEffect(
-        () => {
-            fetch('https://dog.ceo/api/breeds/image/random')
-                .then(response => response.json())
-                .then(data => console.log(data))
-        },
-        [counter]
-    )
-
-    
     return (
-        <div>
-            <h1>Home</h1>
-            <h2>Primer contador</h2>
-            <p>Contador: {counter}</p>
-            <button onClick={handleAdd}>Sumar</button>
-            <button onClick={handleReset}>Reset</button>
-            <hr />
-            <h2>Segundo contador</h2>
-            <p>Contador: {counter2}</p>
-            <button onClick={handleAdd2}>Sumar</button>
-            <button onClick={handleReset2}>Reset</button>
-        <Carousel />
-        </div>
+        <section className="bg-gray-900 text-white">
+            <div
+                className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center"
+            >
+                <div className="mx-auto max-w-3xl text-center">
+                    <h1
+                        className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl"
+                    >
+                        Understand User Flow.
+
+                        <span className="sm:block"> Increase Conversion. </span>
+                    </h1>
+
+                    <p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
+                        tenetur fuga ducimus numquam ea!
+                    </p>
+
+                    <div className="mt-8 flex flex-wrap justify-center gap-4">
+                        <a
+                            className="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+                            href="/get-started"
+                        >
+                            Get Started
+                        </a>
+
+                        <a
+                            className="block w-full rounded border border-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"
+                            href="/about"
+                        >
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     )
 }
 
