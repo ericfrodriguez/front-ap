@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from '../pages/Home'
 import Main from '../layouts/Main'
-import { Cities } from "../pages/Cities";
+import { Events } from "../pages/Events";
 import { SignIn } from "../pages/SignIn";
-import CityDetails from "../pages/CityDetails";
+import EventDetails from "../pages/EventDetails";
 
 
 const router = createBrowserRouter([
@@ -16,12 +16,12 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: '/cities',
-                element: <Cities />
+                path: '/events',
+                element: <Events />
             },
             {
-                path: '/cities/:id',
-                element: <CityDetails />
+                path: '/events/:id',
+                element: <EventDetails />
             },
             {
                 path: '*',
