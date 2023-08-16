@@ -7,9 +7,8 @@ const Header = () => {
 
     const links = [
         { title: 'home', to: '/' },
-        { title: 'cities', to: '/cities' },
+        { title: 'events', to: '/events' },
         { title: 'sign in', to: '/signin' },
-
     ]
 
     const handleShowMenu = () => {
@@ -23,7 +22,7 @@ const Header = () => {
     }
 
     return (
-        <header className='w-full h-auto text-center'>
+        <header className='flex flex-col justify-center items-center w-full h-auto text-center py-4'>
             <h2 className='my-4 text-3xl text-center'>Amazing Events</h2>
             <div className=''>
                 <button className='p-2 border-sky-800 border-[1px] rounded-md' onClick={handleShowMenu}>Show menu</button>
