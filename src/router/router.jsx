@@ -24,14 +24,14 @@ const router = createBrowserRouter([
                 element: <EventDetails />
             },
             {
+                path: '/signin',
+                element: <SignIn />
+            },
+            {
                 path: '*',
                 element: <h1 className="text-3xl">Pagina de ERROR</h1>
             },
         ]
-    },
-    {
-        path: '/signin',
-        element: <SignIn />
     },
 ]);
 

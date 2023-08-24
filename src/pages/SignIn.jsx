@@ -1,5 +1,22 @@
+import { useDispatch } from "react-redux"
+import { user_photo } from "../store/actions/userActions";
 
 export const SignIn = () => {
+
+    const dispatch = useDispatch();
+
+    const handleSignIn = () => {
+        // Simulo que mi usuario se logueo correctamente
+        // Simulo que obtengo los datos del usuario (photo)
+        // Utilizo el dispatch para enviar esa información (disparar el evento del action)
+        // Y que el reducer haga el cambio de estado
+        const user = {
+            photo: 'https://media.newyorker.com/photos/64bc4330ef09d4a0e04cb249/3:4/w_1278,h_1704,c_limit/Rosen-Messi-Miami.jpg'
+        }
+
+        dispatch(user_photo(user))
+    }
+
     return (
 
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
@@ -12,7 +29,7 @@ export const SignIn = () => {
                 </p>
             </div>
 
-            <form action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+            <div action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
                 <div>
                     <label htmlFor="email" className="sr-only">Email</label>
 
@@ -86,11 +103,12 @@ export const SignIn = () => {
                     <button
                         type="submit"
                         className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+                        onClick={handleSignIn}
                     >
                         Sign in
                     </button>
                 </div>
-            </form>
+            </div>
         </div>
     )
 }
