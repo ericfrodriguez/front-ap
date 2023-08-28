@@ -1,40 +1,28 @@
 import { Link } from 'react-router-dom'
 import { Card } from '../components/Card'
-import axios from 'axios'
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { filter_events, get_events } from '../store/actions/eventActions';
+
 
 export const Events = () => {
-    const [events, setEvents] = useState();
+
+    const events = useSelector((store) => store.eventReducer.events)
+
+    const dispatch = useDispatch();
 
     let inputSearch = useRef();
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/events')
-            .then(response => setEvents(response.data.events))
-            .catch(err => console.log(err))
-    }, []);
+        dispatch(get_events())
+    }, [dispatch]);
 
 
-    const handleSearch = async () => {
+    const handleSearch = () => {
 
-        const name = inputSearch.current.value;
-        console.log(inputSearch.current.name)
-
-        try {
-            // Otro codigo
-
-            const response = await axios.get(`http://localhost:8000/api/events?name=${name}`)
-            setEvents(response.data.events)
-
-        } catch (error) {
-            if(error.response.status === 404) {
-                console.log('No se encontraron eventos')
-                setEvents([])
-            } else {
-                console.log(error)
-            }
-
-        }
+            dispatch(filter_events({
+                name: inputSearch.current.value
+            }))
     }
 
     return (
@@ -48,14 +36,14 @@ export const Events = () => {
             <h2 className='text-3xl my-4'>Events</h2>
             {
                 events?.length > 0
-                ? events?.map((event) => {
-                    return (
-                        <Link key={event._id} to={`/events/${event._id}`}>
-                            <Card title={event.name} description={event.description} date={event.date} />
-                        </Link>
-                    )
-                })
-                : <h2>No se encontraron eventos</h2>
+                    ? events?.map((event) => {
+                        return (
+                            <Link key={event._id} to={`/events/${event._id}`}>
+                                <Card title={event.name} description={event.description} date={event.date} />
+                            </Link>
+                        )
+                    })
+                    : <h2>No se encontraron eventos</h2>
             }
         </div>
     )
