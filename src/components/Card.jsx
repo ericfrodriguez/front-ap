@@ -2,7 +2,7 @@
 export const Card = ({title, description, date}) => {
     return (
         <article
-            className="relative overflow-hidden rounded-lg shadow transition max-w-[500px] hover:shadow-lg my-4"
+            className="relative min-w-[500px] overflow-hidden rounded-lg shadow transition max-w-[500px] hover:shadow-lg my-4"
         >
             <img
                 alt="Office"

@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 const Header = () => {
 
     let [show, setShow] = useState(false);
+    const photo = useSelector(store => store.userReducer.photo)
 
     const links = [
         { title: 'home', to: '/' },
@@ -22,9 +24,9 @@ const Header = () => {
     }
 
     return (
-        <header className='flex flex-col justify-center items-center w-full h-auto text-center py-4'>
+        <header className='flex justify-between items-center w-full h-auto text-center py-4 px-8'>
             <h2 className='my-4 text-3xl text-center'>Amazing Events</h2>
-            <div className=''>
+            <div>
                 <button className='p-2 border-sky-800 border-[1px] rounded-md' onClick={handleShowMenu}>Show menu</button>
                 {
                     show
@@ -32,6 +34,7 @@ const Header = () => {
                         : null
                 }
             </div>
+            <img className='w-[70px] h-[70px] rounded-full object-cover' src={photo} alt="" />
         </header>
     )
 }
