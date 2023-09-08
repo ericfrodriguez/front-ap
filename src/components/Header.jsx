@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom'
 const Header = () => {
 
     let [show, setShow] = useState(false);
-    const photo = useSelector(store => store.userReducer.photo)
+    const user = useSelector(store => store.userReducer.user);
+    console.log(user)
+    const defaultPhoto = 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg';
 
     const links = [
         { title: 'home', to: '/' },
         { title: 'events', to: '/events' },
-        { title: 'sign in', to: '/signin' },
+        { title: user ? null : 'sign in', to: '/signin' },
     ]
 
     const handleShowMenu = () => {
@@ -34,7 +36,7 @@ const Header = () => {
                         : null
                 }
             </div>
-            <img className='w-[70px] h-[70px] rounded-full object-cover' src={photo} alt="" />
+            <img className='w-[70px] h-[70px] rounded-full object-cover' src={user ? user.photo : defaultPhoto} alt="" />
         </header>
     )
 }

@@ -4,7 +4,7 @@ import Main from '../layouts/Main'
 import { Events } from "../pages/Events";
 import { SignIn } from "../pages/SignIn";
 import EventDetails from "../pages/EventDetails";
-
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
     {
@@ -25,10 +25,16 @@ const router = createBrowserRouter([
             },
             {
                 path: '/signin',
-                element: <SignIn />
+                element: (<ProtectedRoute path='/'>
+                    <SignIn />
+                </ProtectedRoute>)
             },
             {
                 path: '*',
+                element: <h1 className="text-3xl">Pagina de ERROR</h1>
+            },
+            {
+                path: '/404',
                 element: <h1 className="text-3xl">Pagina de ERROR</h1>
             },
         ]
