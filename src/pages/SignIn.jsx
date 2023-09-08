@@ -1,20 +1,37 @@
-import { useDispatch } from "react-redux"
-import { user_photo } from "../store/actions/userActions";
+import { useDispatch, useSelector } from "react-redux"
+import { user_login} from "../store/actions/userActions";
+import { useState } from "react";
 
 export const SignIn = () => {
+    // const store = useSelector(store => store.userReducer);
+    // console.log('Viene del store',store)
+
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    })
 
     const dispatch = useDispatch();
 
-    const handleSignIn = () => {
-        // Simulo que mi usuario se logueo correctamente
-        // Simulo que obtengo los datos del usuario (photo)
-        // Utilizo el dispatch para enviar esa información (disparar el evento del action)
-        // Y que el reducer haga el cambio de estado
-        const user = {
-            photo: 'https://media.newyorker.com/photos/64bc4330ef09d4a0e04cb249/3:4/w_1278,h_1704,c_limit/Rosen-Messi-Miami.jpg'
-        }
+    const handleInput = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value
+        })
+    }
 
-        dispatch(user_photo(user))
+    console.log(formData)
+
+    const handleSignIn = async (event) => {
+        event.preventDefault();
+
+        try {
+            dispatch(user_login({
+                data: formData
+            }))
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -29,13 +46,15 @@ export const SignIn = () => {
                 </p>
             </div>
 
-            <div action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+            <form onSubmit={handleSignIn} action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
                 <div>
                     <label htmlFor="email" className="sr-only">Email</label>
 
                     <div className="relative">
                         <input
+                            onChange={handleInput}
                             type="email"
+                            name="email"
                             className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                             placeholder="Enter email"
                         />
@@ -64,7 +83,9 @@ export const SignIn = () => {
 
                     <div className="relative">
                         <input
+                            onChange={handleInput}
                             type="password"
+                            name="password"
                             className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                             placeholder="Enter password"
                         />
@@ -108,7 +129,7 @@ export const SignIn = () => {
                         Sign in
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     )
 }
