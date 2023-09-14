@@ -8,7 +8,7 @@ import apiUrl from "./api"
 
 function App() {
   let dispatch = useDispatch();
-
+  
   useEffect(() => {
     let url = `${apiUrl}/auth/token`
     let token = localStorage.getItem('token')
