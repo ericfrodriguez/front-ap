@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { user_login} from "../store/actions/userActions";
 import { useState } from "react";
 import { GoogleSignin } from "../components/GoogleSignin";
+import Swal from 'sweetalert2';
 
 export const SignIn = () => {
     // const store = useSelector(store => store.userReducer);
@@ -30,6 +31,8 @@ export const SignIn = () => {
             dispatch(user_login({
                 data: formData
             }))
+
+            
         } catch (error) {
             console.log(error)
         }
