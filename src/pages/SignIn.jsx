@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import { user_login} from "../store/actions/userActions";
 import { useState } from "react";
+import { GoogleSignin } from "../components/GoogleSignin";
+import Swal from 'sweetalert2';
 
 export const SignIn = () => {
     // const store = useSelector(store => store.userReducer);
@@ -29,6 +31,8 @@ export const SignIn = () => {
             dispatch(user_login({
                 data: formData
             }))
+
+            
         } catch (error) {
             console.log(error)
         }
@@ -114,6 +118,8 @@ export const SignIn = () => {
                         </span>
                     </div>
                 </div>
+
+                <GoogleSignin />
 
                 <div className="flex items-center justify-between">
                     <p className="text-sm text-gray-500">

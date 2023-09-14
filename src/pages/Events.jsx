@@ -3,7 +3,7 @@ import { Card } from '../components/Card'
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filter_events, get_events } from '../store/actions/eventActions';
-
+import Swal from 'sweetalert2';
 
 export const Events = () => {
 
@@ -18,11 +18,30 @@ export const Events = () => {
     }, [dispatch]);
 
 
-    const handleSearch = () => {
+    const handleSearch = async () => {
 
+        const result = await Swal.fire({
+            title: 'Desea confirmar la busqueda',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Buscar',
+            denyButtonText: `Volver al listado`,
+        })
+
+        if (result.isConfirmed) {
+            Swal.fire('Busqueda correcta', '', 'success')
             dispatch(filter_events({
                 name: inputSearch.current.value
             }))
+        } else if (result.isDenied) {
+            Swal.fire('Busqueda cancelada', '', 'info')
+        }
+
+
+        // .then((result) => {
+        //     /* Read more about isConfirmed, isDenied below */
+        // })
+
     }
 
     return (
